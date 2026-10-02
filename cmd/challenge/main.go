@@ -40,6 +40,6 @@ func run(logger *slog.Logger) error {
 	defer stop()
 
 	client := binance.NewClient(binance.NewHTTPClient(cfg.ConnectTimeout, cfg.ReadTimeout), cfg.Binance)
-	_, err = calculator.New(client, logger).Run(ctx)
+	_, err = calculator.New(client, logger, cfg.Binance.OrderBookDepth).Run(ctx)
 	return err
 }

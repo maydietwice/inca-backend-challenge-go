@@ -25,7 +25,7 @@ func TestRunAgainstBinance(t *testing.T) {
 	client := binance.NewClient(binance.NewHTTPClient(cfg.ConnectTimeout, cfg.ReadTimeout), cfg.Binance)
 	logger := slog.New(slog.NewTextHandler(os.Stderr, nil))
 
-	metrics, err := calculator.New(client, logger).Run(context.Background())
+	metrics, err := calculator.New(client, logger, cfg.Binance.OrderBookDepth).Run(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
