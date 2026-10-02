@@ -27,5 +27,6 @@ jobs:
         timeout-minutes: 30
         env:
           BINANCE_INTEGRATION: "1"
+          BINANCE_BASE_URL: https://data-api.binance.vision/api/v3
           HTTPS_PROXY: ${{ secrets.PROXY_URL }}
         run: go test ./internal/calculator -run TestRunAgainstBinance -v -count=1 -timeout 30m
